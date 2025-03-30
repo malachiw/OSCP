@@ -13,5 +13,5 @@ A curated selection of resources for passing the OSCP Certification exam.
 [Linux Exploit Suggester](https://github.com/malachiw/Linux_Exploit_Suggester)
 
 ## XSS
-[OWASP - Types of XSS](https://owasp.org/www-community/Types_of_Cross-Site_Scripting)
+[OWASP - Types of XSS](https://owasp.org/www-community/Types_of_Cross-Site_Scripting)<br>
 [Create an Admin Account Using XSS](https://shift8web.ca/craft-xss-payload-create-admin-user-in-wordpress-user)
