@@ -6,5 +6,8 @@ A curated selection of resources for passing the OSCP Certification exam.
 [Reverse Shell Generator](https://www.revshells.com/)  
 [7 Linux Shells with Built-in Tools](https://www.lanmaster53.com/2011/05/7-linux-shells-using-built-in-tools/)
 
-# Windows Exploits
+## Windows 
 [Windows Exploit Suggester](https://github.com/malachiw/Windows-Exploit-Suggester)
+
+## Linux
+[Linux Exploit Suggester](https://github.com/malachiw/Linux_Exploit_Suggester)
