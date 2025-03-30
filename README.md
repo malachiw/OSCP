@@ -11,3 +11,6 @@ A curated selection of resources for passing the OSCP Certification exam.
 
 ## Linux
 [Linux Exploit Suggester](https://github.com/malachiw/Linux_Exploit_Suggester)
+
+## XSS
+[Create an Admin Account Using XSS](https://shift8web.ca/craft-xss-payload-create-admin-user-in-wordpress-user)
