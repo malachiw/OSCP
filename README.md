@@ -15,3 +15,6 @@ A curated selection of resources for passing the OSCP Certification exam.
 ## XSS
 [OWASP - Types of XSS](https://owasp.org/www-community/Types_of_Cross-Site_Scripting)<br>
 [Create an Admin Account Using XSS](https://shift8web.ca/craft-xss-payload-create-admin-user-in-wordpress-user)
+
+## WordPress
+[Reverse Shell Plugin](https://sevenlayers.com/index.php/179-wordpress-plugin-reverse-shell)
