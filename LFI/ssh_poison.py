@@ -1,3 +1,7 @@
+"""
+See the Proving Grounds/ha-natraj notes. Use to poison auth.log with an ssh attempt 
+when you cannot pass the php code over the cmd-line.
+"""
 import paramiko
  
 host = "192.168.124.80"
