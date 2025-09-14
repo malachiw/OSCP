@@ -1,6 +1,6 @@
 #Great Snippets for Windows
 ## use linux to base64 enc for use in Windows
-```console
+```shell
 cat pscommand.txt | iconv -f UTF-8 -t UTF-16LE | base64 -w 0
 ```
 
