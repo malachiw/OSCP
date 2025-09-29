@@ -1,41 +1,46 @@
 #!/bin/zsh
 
-# Check if exactly one argument is passed
+# This script is meant to be sourced or wrapped in a function
+# to update and export IP in .zshenv
+
 if [[ "$#" -ne 1 ]]; then
-    echo "Usage: $0 <IPv4 or IPv6 address>"
-    exit 1
+    echo "Usage: target <IPv4 or IPv6 address>"
+    return 1
 fi
 
-IP="$1"
+IP_VALUE="$1"
 
-# Regex patterns for IPv4 and IPv6
+# Regex patterns
 ipv4_regex='^([0-9]{1,3}\.){3}[0-9]{1,3}$'
 ipv6_regex='^([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}$'
 
 # Validate IPv4
-if [[ "$IP" =~ $ipv4_regex ]]; then
-    # Split IP into octets using Zsh split
+if [[ "$IP_VALUE" =~ $ipv4_regex ]]; then
     local -a octets
-    IFS='.' octets=("${(@s:.:)IP}")
-    
+    IFS='.' octets=("${(@s:.:)IP_VALUE}")
     for octet in "${octets[@]}"; do
         if (( octet < 0 || octet > 255 )); then
             echo "Invalid IPv4 address: Octet '$octet' out of range"
-            exit 1
+            return 1
         fi
     done
-    
-    export IP="$IP"
-    echo "Valid target. Exported IP=$IP"
-    exit 0
+elif [[ "$IP_VALUE" =~ $ipv6_regex ]]; then
+    true  # IPv6 format looks good
+else
+    echo "Invalid IP address format."
+    return 1
 fi
 
-# Validate IPv6
-if [[ "$IP" =~ $ipv6_regex ]]; then
-    export IP="$IP"
-    echo "Valid target. Exported IP=$IP"
-    exit 0
+# .zshenv path and variable
+ZSHENV_PATH="$HOME/.zshenv"
+ENV_VAR_NAME="IP"
+
+# Backup .zshenv if it exists
+cp "$ZSHENV_PATH" "$ZSHENV_PATH.bak" 2>/dev/null
+
+# Remove existing IP export and add new one
+if grep -q "^export ${ENV_VAR_NAME}=" "$ZSHENV_PATH" 2>/dev/null; then
+    sed -i '' "/^export ${ENV_VAR_NAME}=/d" "$ZSHENV_PATH"
 fi
 
-echo "Invalid IP address format."
-exit 1
+ec
