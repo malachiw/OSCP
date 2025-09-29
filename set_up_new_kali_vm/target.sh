@@ -10,6 +10,7 @@
 # target() {
 #   /usr/local/bin/target "$1" && source ~/.zshenv
 # }
+# chmod +x ./target.sh then mv ./target.sh /usr/bin/target
 
 # Ensure one argument is passed
 if [[ "$#" -ne 1 ]]; then
