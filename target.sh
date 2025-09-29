@@ -4,7 +4,8 @@
 # to update and export IP in .zshenv
 #
 # Add this to .zshenv so that you can update $IP and it is 
-# immediately available.
+# immediately available. 
+# Don't forget to source .zshenv so that the wrapper is ready to go.
 #
 # target() {
 #   /usr/local/bin/target "$1" && source ~/.zshenv
