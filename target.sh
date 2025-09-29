@@ -2,6 +2,14 @@
 
 # This script is meant to be sourced or wrapped in a function
 # to update and export IP in .zshenv
+#
+# Add this to .zshenv so that you can update $IP and it is 
+# immediately available.
+#
+# target() {
+#   /usr/local/bin/target "$1" && source ~/.zshenv
+# }
+
 
 if [[ "$#" -ne 1 ]]; then
     echo "Usage: target <IPv4 or IPv6 address>"
