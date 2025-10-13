@@ -1,4 +1,4 @@
-Windows Automated PrivEsc enumeration
+Windows Automated PrivEsc enumeration<br>
 [PrivescCheck](https://github.com/itm4n/PrivescCheck?tab=readme-ov-file)<br>
 <br>
 Checkout these resources
