@@ -1,3 +1,6 @@
+Windows Automated PrivEsc enumeration
+[PrivescCheck](https://github.com/itm4n/PrivescCheck?tab=readme-ov-file)<br>
+<br>
 Checkout these resources
 
 [PayloadsAllTheThings](https://github.com/malachiw/PayloadsAllTheThings/tree/master)<br>
