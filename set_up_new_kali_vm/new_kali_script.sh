@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-sudo apt install pipx git feroxbuster ncat chisel -y
+sudo apt install pipx git feroxbuster ncat chisel neo4j -y
 pipx install name-that-hash dirsearch
 pip3 install wsgidav --break-system-packages
 pipx ensurepath
