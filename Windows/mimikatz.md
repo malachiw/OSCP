@@ -1,5 +1,5 @@
 # mimikatz
-Full breakdown available here: [Mimikatz](https://tools.thehacker.recipes/mimikatz)
+Full breakdown available here: [Mimikatz](https://tools.thehacker.recipes/mimikatz) or [Mimikatz](https://adsecurity.org/?page_id=1821)
 
 ## Rudimentary setup for dumping NTLM hashes for cracking or pass-the-hash attacks.
 
