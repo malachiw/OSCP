@@ -8,13 +8,22 @@
 set -o pipefail
 
 # --- Configuration ---
+# List of apt packages to install (add or remove as needed)
 APT_PACKAGES=(pipx git feroxbuster ncat chisel neo4j bloodhound crackmapexec shellter wine veil)
+
+# List of pipx packages to install (add or remove as needed)
 PIPX_PACKAGES=(name-that-hash dirsearch "git+https://github.com/Pennyw0rth/NetExec")
-PIP3_PACKAGES=(wsgidav)           # note: original used --break-system-packages
+
+# List of pip3 packages to install (add or remove as needed)
+PIP3_PACKAGES=(wsgidav)  # This will be installed with --break-system-packages
+
+# Path to Veil setup script (change if needed)
 VEIL_SETUP="/var/share/veil/config/setup.sh"
+
+# Array to track failed installations (so we can report them later)
 FAILURES=()
 
-# --- Helpers ---
+# --- Helper Functions ---
 log()    { printf '%s\n' "$*"; }
 info()   { printf '\033[1;34m[INFO]\033[0m %s\n' "$*"; }
 warn()   { printf '\033[1;33m[WARN]\033[0m %s\n' "$*"; }
@@ -35,7 +44,7 @@ try() {
   fi
 }
 
-# Check command exists
+# Check if a command exists
 has_cmd() { command -v "$1" >/dev/null 2>&1; }
 
 # Prompt-safety for noninteractive apt installs
@@ -114,7 +123,7 @@ install_pipx_packages() {
   done
 }
 
-# Install pip3 packages (non-fatal). Respect original --break-system-packages usage only if needed.
+# Install pip3 packages with --break-system-packages for wsgidav
 install_pip3_packages() {
   if ! has_cmd pip3; then
     warn "pip3 not found; skipping pip3 installs"
@@ -123,11 +132,16 @@ install_pip3_packages() {
   fi
 
   for pkg in "${PIP3_PACKAGES[@]}"; do
-    # try without breaking system packages first
-    try "pip3 install $pkg" pip3 install --user "$pkg" || {
-      warn "pip3 --user install failed for $pkg; trying global with --break-system-packages"
-      try "pip3 install $pkg (fallback, may use --break-system-packages)" sudo pip3 install "$pkg" --break-system-packages || true
-    }
+    # Specifically install wsgidav with --break-system-packages
+    if [ "$pkg" == "wsgidav" ]; then
+      try "pip3 install $pkg (with --break-system-packages)" sudo pip3 install "$pkg" --break-system-packages || true
+    else
+      # Normal install for other packages
+      try "pip3 install $pkg" pip3 install --user "$pkg" || {
+        warn "pip3 --user install failed for $pkg; trying global with --break-system-packages"
+        try "pip3 install $pkg (fallback, may use --break-system-packages)" sudo pip3 install "$pkg" --break-system-packages || true
+      }
+    fi
   done
 }
 
@@ -164,15 +178,28 @@ enable_postgresql() {
 # --- Main ---
 info "Starting Silon installer $(date)"
 
+# Install apt packages
 install_apt_packages
+
+# Ensure i386 architecture and install wine32 if needed
 ensure_i386_and_wine32
+
+# Run Veil setup
 run_veil_setup
 
+# Ensure pipx is available, install if needed
 ensure_pipx
+
+# Install pipx packages
 install_pipx_packages
+
+# Install pip3 packages
 install_pip3_packages
 
+# Initialize msfdb if available
 maybe_init_msfdb
+
+# Enable postgresql service if available
 enable_postgresql
 
 # --- Summary ---
