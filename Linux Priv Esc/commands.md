@@ -49,6 +49,10 @@ ss -anp
 ```
 
 ```
+netstat -tlnp
+```
+
+```
 cat /etc/iptables/rules.v4
 ```
 
