@@ -63,6 +63,9 @@ ls -lah /etc/cron*
 ```
 crontab -l
 ```
+```
+sudo -l
+```
 
 ```
 sudo crontab -l
