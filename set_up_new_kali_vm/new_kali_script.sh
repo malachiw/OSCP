@@ -192,7 +192,7 @@ install_add_creds() {
     cat > "$tmpfile" <<"EOF"
 #!/bin/zsh
 
-# Ensure two arguments are passed
+# Ensure enough arguments are passed
 if [[ "$#" -ge 3 ]]; then
     echo "Usage: add_creds <username> <password> <path> <notes (optional)>"
     exit 1
