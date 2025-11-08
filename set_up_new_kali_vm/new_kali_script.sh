@@ -175,60 +175,6 @@ enable_postgresql() {
   fi
 }
 
-# Install add_creds to /usr/bin
-install_add_creds() {
-    local target="/usr/bin/add_creds"
-    local tmpfile
-
-    echo "Creating add_creds utility at $target ..."
-
-    # Try to create a temporary file safely
-    tmpfile=$(mktemp) || {
-        echo "Failed to create temporary file."
-        return 1
-    }
-
-    # Write the script into the temp file
-    cat > "$tmpfile" <<"EOF"
-#!/bin/zsh
-
-# Ensure enough arguments are passed
-if [[ "$#" -ge 3 ]]; then
-    echo "Usage: add_creds <username> <password> <path> <notes (optional)>"
-    exit 1
-fi
-
-# Ensure the destination file exists or can be created
-if ! touch "$3" 2>/dev/null; then
-    echo "Error: Cannot write to $2"
-    exit 1
-fi
-
-# Append creds to cred file
-if [[ "$#" == 3 ]]; then
-  echo "$1:$2" >> "$3"
-else
-   echo "$1:$2 $4" >> "$3"
-echo "Credentials added to $2"
-EOF
-
-    # Move to /usr/bin
-    if ! sudo mv "$tmpfile" "$target" 2>/dev/null; then
-        echo "Failed to move script to $target (need sudo?)."
-        rm -f "$tmpfile"
-        return 1
-    fi
-
-    # Make executable
-    if ! sudo chmod +x "$target" 2>/dev/null; then
-        echo "Failed to make $target executable."
-        return 1
-    fi
-
-    echo "Installed $target successfully."
-    return 0
-}
-
 # --- Main ---
 info "Starting Silon installer $(date)"
 
@@ -256,8 +202,6 @@ maybe_init_msfdb
 # Enable postgresql service if available
 enable_postgresql
 
-# Install add_creds
-install_add_creds
 
 # --- Summary ---
 if [ "${#FAILURES[@]}" -gt 0 ]; then
