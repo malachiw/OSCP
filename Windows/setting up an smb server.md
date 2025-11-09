@@ -8,7 +8,7 @@ sudo impacket-smbserver share_name -smb2support ./path/to/share -username "home"
 
 ```
 ```powershell
-net use Z: \\192.168.30.130\SDFR /user:peon peon
+net use Z: \\192.168.30.130\SDFR /user:home home
 ```
 ```powershell
 net use Z: /delete /y
