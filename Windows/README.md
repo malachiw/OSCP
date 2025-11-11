@@ -3,7 +3,7 @@ Windows Automated PrivEsc enumeration<br>
 <br>
 Checkout these resources
 
-[Abusing Domain Signed Certs for escalation](https://www.hackingarticles.in/ad-certificate-exploitation-esc1/)
+[Abusing Domain Signed Certs for escalation](https://www.hackingarticles.in/ad-certificate-exploitation-esc1/)<br>
 [PayloadsAllTheThings](https://github.com/malachiw/PayloadsAllTheThings/tree/master)<br>
 [Windows_Potatoes_PrivEsc](https://jlajara.gitlab.io/Potatoes_Windows_Privesc)<br>
 [_SigmaPotato_](https://github.com/tylerdotrar/SigmaPotato)<br>
