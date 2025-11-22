@@ -7,3 +7,7 @@ using wpscan
 ```shell
 wpscan --url http://<domain> --plugins-detection aggressive -o wpscan --api-token <api-token>
 ```
+powershell
+```powershell
+22..445 | ForEach-Object {if ((Test-NetConnection <HOST> -Port $_).TcpTestSucceeded) {$_}}
+```
