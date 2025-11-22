@@ -9,5 +9,5 @@ wpscan --url http://<domain> --plugins-detection aggressive -o wpscan --api-toke
 ```
 powershell
 ```powershell
-22..445 | ForEach-Object {if ((Test-NetConnection <HOST> -Port $_).TcpTestSucceeded) {$_}}
+echo 21 22 23 25 53 80 110 111 135 139 143 443 445 993 995 1723 3306 3389 5900 8080 | ForEach-Object {if ((Test-NetConnection <HOST> -Port $_).TcpTestSucceeded) {$_}}
 ```
