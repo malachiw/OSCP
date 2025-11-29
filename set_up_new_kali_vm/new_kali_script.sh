@@ -9,7 +9,7 @@ set -o pipefail
 
 # --- Configuration ---
 # List of apt packages to install (add or remove as needed)
-APT_PACKAGES=(pipx git feroxbuster ncat chisel neo4j bloodhound crackmapexec shellter wine veil)
+APT_PACKAGES=(pipx git feroxbuster ncat chisel neo4j bloodhound crackmapexec shellter wine veil hoaxshell)
 
 # List of pipx packages to install (add or remove as needed)
 PIPX_PACKAGES=(name-that-hash dirsearch "git+https://github.com/Pennyw0rth/NetExec")
